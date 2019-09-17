@@ -11,6 +11,7 @@ H = 1080//2
 
 F = 270 #1
 disp = Display(W, H)
+# K: Intrinsic Matrix
 K = np.array([[F,0,W//2],[0,F,H//2],[0,0,1]])
 print(K)
 fe = Extractor(K)

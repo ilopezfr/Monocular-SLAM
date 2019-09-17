@@ -12,15 +12,15 @@ def add_ones(x):
 
 def extractRt(E):
   W = np.mat([[0,-1,0],[1,0,0],[0,0,1]],dtype=float)
-  U,d,Vt = np.linalg.svd(E)
-  assert np.linalg.det(U) > 0
+  U,d,Vt = np.linalg.svd(E) # singular value decomposition (SVD)
+  assert np.linalg.det(U) > 0 #compute determinant of U
   if np.linalg.det(Vt) < 0:
     Vt *= -1.0
   R = np.dot(np.dot(U, W), Vt)
   if np.sum(R.diagonal()) < 0:
     R = np.dot(np.dot(U, W.T), Vt)
   t = U[:, 2]
-  Rt = np.concatenate([R,t.reshape(3,1)], axis=1)
+  Rt = np.concatenate([R,t.reshape(3,1)], axis=1) #pose
   return Rt
 
 class Extractor(object):
